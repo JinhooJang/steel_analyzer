@@ -1,0 +1,15 @@
+no,outlook,temperature,humidity,windy,play
+1,sunny,hot,high,False,no
+2,sunny,hot,high,True,no
+3,overcast,hot,high,False,yes
+4,rainy,mild,high,False,yes
+5,rainy,cool,normal,False,yes
+6,rainy,cool,normal,True,no
+7,overcast,cool,normal,True,yes
+8,sunny,mild,high,False,no
+9,sunny,cool,normal,False,yes
+10,rainy,mild,normal,False,yes
+11,sunny,mild,normal,True,yes
+12,overcast,mild,high,True,yes
+13,overcast,hot,normal,False,yes
+14,rainy,mild,high,True,no
