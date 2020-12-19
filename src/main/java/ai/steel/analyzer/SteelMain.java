@@ -20,6 +20,7 @@ public class SteelMain {
 	public static void main(String[] args) {
 		FileModule fileModule = new FileModule();
 		
+		// sample 폴더안에 있는 play.csv 실행
 		List<Map<String, String>> csvData 
 					= fileModule.readCsvToListMap("./sample/play.csv", true, ",");
 		
