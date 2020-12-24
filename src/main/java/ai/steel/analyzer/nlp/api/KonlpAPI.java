@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import ai.steel.analyzer.nlp.module.Dictionary;
-import ai.steel.analyzer.nlp.module.KoNlp;
+import ai.steel.analyzer.nlp.module.Konlp;
 import ai.steel.analyzer.nlp.vo.MorphemeVO;
-import ai.steel.analyzer.nlp.vo.NlpConfigVO;
+import ai.steel.analyzer.nlp.vo.KonlpConfigVO;
 
 
 
@@ -20,12 +20,12 @@ import ai.steel.analyzer.nlp.vo.NlpConfigVO;
  * @version 0.8.0 (2020.12.22)
  * 외부 설정 파일을 통해서, 설정을 사용할 수 있게 Flexible하게 변경
  */
-public class KoNlpAPI {
+public class KonlpAPI {
 	
 	protected String NEWLINE = System.getProperty("line.separator");
 	
-	private KoNlp ANALYZE;
-	private NlpConfigVO CONFIG;;
+	private Konlp ANALYZE;
+	private KonlpConfigVO CONFIG;
 	
 	// 기분석된 형태소 사전
 	protected HashMap<String, String> morphemeDic;
@@ -59,11 +59,11 @@ public class KoNlpAPI {
      * @param DICPATH
      * @throws Exception
      */
-	public KoNlpAPI(NlpConfigVO CONFIG) throws Exception {
+	public KonlpAPI(KonlpConfigVO CONFIG) throws Exception {
 		this.CONFIG = CONFIG;
 		this.reloadDictionary();
 		
-		ANALYZE = new KoNlp(
+		ANALYZE = new Konlp(
 				morphemeDic, 
 				tagDictionary,
 				tagSubDictionary, 
@@ -160,9 +160,18 @@ public class KoNlpAPI {
 		List<HashMap<String, MorphemeVO>> morphemeMap = new ArrayList<HashMap<String, MorphemeVO>> ();
 		List<HashMap<String, MorphemeVO>> sentenceMorphMap = null;
 		
+		// 구분자 특수문자는 공백으로 변경
+		document = document.replaceAll(",", " ")
+				.replaceAll("/", " ")
+				.replaceAll("\\|", " ")
+				.replaceAll("·", " ");				
+		
+		
+		// 개행은 마침표로 변경
 		document = document.trim()
 				.replaceAll("\n", ".")
 				.replaceAll("\r", ".");
+		
 		String[] sentences = document.split("\\.");
 		
 		//System.out.println(sentences.length + " sentences.");
@@ -213,7 +222,15 @@ public class KoNlpAPI {
 		//LOGGER.debug("document : " + document);
 		List<HashMap<String, MorphemeVO>> sentenceMorphMap = null;
 		
-		document = document.trim().replaceAll("\n", ".").replaceAll("\r", ".");
+		// 구분자 특수문자는 공백으로 변경
+		document = document.replaceAll(",", " ")
+				.replaceAll("/", " ")
+				.replaceAll("\\|", " ")
+				.replaceAll("·", " ");	
+		
+		document = document.trim()
+				.replaceAll("\n", ".")
+				.replaceAll("\r", ".");				
 		String[] sentences = document.split("\\.");
 		
 		String sentence = "";
@@ -281,6 +298,12 @@ public class KoNlpAPI {
 		//LOGGER.debug("document : " + document);
 		List<HashMap<String, MorphemeVO>> sentenceMorphMap = null;
 		
+		// 구분자 특수문자는 공백으로 변경
+		document = document.replaceAll(",", " ")
+				.replaceAll("/", " ")
+				.replaceAll("\\|", " ")
+				.replaceAll("·", " ");	
+		
 		document = document.trim().replaceAll("\n", ".").replaceAll("\r", ".");
 		String[] sentences = document.split("\\.");
 		
@@ -340,6 +363,13 @@ public class KoNlpAPI {
 		if(document == null || document.trim().length() == 0) return null;
 		
 		List<String> rtnList = new ArrayList<String> ();
+		
+		// 구분자 특수문자는 공백으로 변경
+		document = document.replaceAll(",", " ")
+				.replaceAll("/", " ")
+				.replaceAll("\\|", " ")
+				.replaceAll("·", " ");	
+		
 		document = document.trim().replaceAll("\n", ".").replaceAll("\r", ".");
 		String[] sentences = document.split("\\.");
 		
@@ -396,6 +426,11 @@ public class KoNlpAPI {
 		//LOGGER.debug("document : " + document);
 		LinkedHashMap<String, MorphemeVO> morphemeMap = new LinkedHashMap<String, MorphemeVO> ();
 		
+		// 구분자 특수문자는 공백으로 변경
+		document = document.replaceAll(",", " ")
+				.replaceAll("/", " ")
+				.replaceAll("\\|", " ")
+				.replaceAll("·", " ");	
 		document = document.trim().replaceAll("\n", ".").replaceAll("\r", ".");
 		String[] sentences = document.split("\\.");
 		

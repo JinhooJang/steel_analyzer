@@ -17,7 +17,7 @@ import ai.steel.analyzer.nlp.vo.MorphemeVO;
  * @author jinhoo.jang
  * @since 2020.01.17
  */
-public class KoNlp {
+public class Konlp {
 	private HashMap<String, String> morphemeDic;
 	private HashMap<String, String[]> tagDictionary;
 	private HashMap<String, String[]> tagSubDictionary;
@@ -39,7 +39,7 @@ public class KoNlp {
 	 * @param nerSynDictionary
 	 * @param snDictionary
 	 */
-	public KoNlp(
+	public Konlp(
 			HashMap<String, String> morphemeDic,
 			HashMap<String, String[]> tagDictionary,
 			HashMap<String, String[]> tagSubDictionary,

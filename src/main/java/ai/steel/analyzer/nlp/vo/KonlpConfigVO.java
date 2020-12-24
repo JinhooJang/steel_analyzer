@@ -7,7 +7,7 @@ package ai.steel.analyzer.nlp.vo;
  * @author jinhoo.jang
  * @since 2020.04.21
  */
-public class NlpConfigVO {
+public class KonlpConfigVO {
 	
 	/** 사전 경로 */
 	private String dicPath;

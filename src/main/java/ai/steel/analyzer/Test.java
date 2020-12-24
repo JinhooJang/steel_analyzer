@@ -7,6 +7,8 @@ import java.util.Map;
 import ai.steel.analyzer.cmmn.FileModule;
 import ai.steel.analyzer.ml.module.NaiveBayesClssfier;
 import ai.steel.analyzer.ml.vo.NBResultVO;
+import ai.steel.analyzer.nlp.api.KonlpAPI;
+import ai.steel.analyzer.nlp.vo.KonlpConfigVO;
 
 /**
  * 모듈들의 기능 테스트를 위한 클래스
@@ -15,15 +17,33 @@ import ai.steel.analyzer.ml.vo.NBResultVO;
  * @since 2020.12.22
  */
 public class Test {
+	
 
 	/**
 	 * 형태소 분석 테스트
-	 * @param document
+	 * @param document 
 	 */
 	public void koNlpTest() {
-		String document = "업무 욕이 과도하여 하나의 일에 집중하기 보다 여러가지 "
-				+ "업무를 동시적으로 수행하려고 하여 다소 시간이 지체되는 경우가 있습니다.";
+		KonlpConfigVO vo = new KonlpConfigVO ();
 		
+		// 사전이 위치한 경로
+		vo.setDicPath("D:/Project/steel/database/dictionary/");
+		// 사용할 NER 리스트 
+		vo.setNerList("SCH,JOB,SKLC,SKLS,MAJ,TSK,NAT,LOC,LIC,MTR".split(","));
+		// 사용자 사전을 사용할 것인지
+		vo.setUserYn(true);
+		
+		String document = "전자출판,마케팅전략·기획,시장조사·분석,업무제휴,전자출판,프로모션";
+		
+		try {
+			KonlpAPI konlpAPI = new KonlpAPI(vo);
+			List<String> nnList = konlpAPI.extractNoun(document);
+			
+			System.out.println(nnList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
