@@ -186,7 +186,8 @@ public class KonlpAPI {
 			// 문장을 다시, 단어로 자른다
 			String[] word = sentence.trim().split(" ");
 			for(int j = 0; j < word.length; j++) {
-				if(word[j].trim().length() > 0) {
+				//System.out.println(word[j].trim());
+				if(word[j].trim().length() > 0 && word[j].trim().length() < 15) {				
 					HashMap<String, MorphemeVO> map = new HashMap<String, MorphemeVO> ();
 					MorphemeVO morphVO = new MorphemeVO ();
 					morphVO.setWord(word[j]);
@@ -245,7 +246,7 @@ public class KonlpAPI {
 			// 문장을 다시, 단어로 자른다
 			String[] word = sentence.trim().split(" ");
 			for(int j = 0; j < word.length; j++) {
-				if(word[j].trim().length() > 0 && word[j].trim().length() < 20) {
+				if(word[j].trim().length() > 0 && word[j].trim().length() < 15) {
 					HashMap<String, MorphemeVO> map = new HashMap<String, MorphemeVO> ();
 					MorphemeVO morphVO = new MorphemeVO ();
 					morphVO.setWord(word[j].trim());
@@ -319,7 +320,7 @@ public class KonlpAPI {
 			// 문장을 다시, 단어로 자른다
 			String[] word = sentence.trim().split(" ");
 			for(int j = 0; j < word.length; j++) {
-				if(word[j].trim().length() > 0 && word[j].trim().length() < 20) {
+				if(word[j].trim().length() > 0 && word[j].trim().length() < 15) {
 					HashMap<String, MorphemeVO> map = new HashMap<String, MorphemeVO> ();
 					MorphemeVO morphVO = new MorphemeVO ();
 					morphVO.setWord(word[j].trim());
@@ -385,7 +386,7 @@ public class KonlpAPI {
 			// 문장을 다시, 단어로 자른다
 			String[] word = sentence.trim().split(" ");
 			for(int j = 0; j < word.length; j++) {
-				if(word[j].trim().length() > 0) {
+				if(word[j].trim().length() > 0 && word[j].trim().length() < 15) {
 					MorphemeVO morphVO = new MorphemeVO ();
 					morphVO.setWord(word[j].trim());
 					ANALYZE.wordAnalyze(word[j].trim(), morphVO, false);

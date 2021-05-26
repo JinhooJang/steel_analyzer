@@ -17,11 +17,12 @@ import ai.steel.analyzer.ml.vo.NBResultVO;
  */
 public class SteelMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Test test = new Test();
 		
 		//test.nbTextClssfier();
 		//nlpTest();
-		test.koNlpTest();
-	}	
+		//test.koNlpTest();
+		System.out.println(test.tika("D:/project/Abstract_Factory.pdf"));
+	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
@@ -134,7 +135,10 @@ public class Konlp {
 		}
 		else if(getPattern(word).equals("SL")) {	// 사전에는 없고, 영어 혹은 영어숫자로만 되어 있을 경우
 			setWordTag(word, "SL", morphVO);	// 패턴 체크(숫자)
-		}
+		}/*
+		else if(mixed(word)) {	// 영문/숫자/한글이 섞인 경우
+			
+		}*/
 		else {
 			String last = "";
 			
@@ -575,6 +579,46 @@ public class Konlp {
 		// 숫자 패턴으로 되어 있을 경우, 추후 만들어야 됨				
 		return "UK";
 	}
+	
+	
+	/**
+	 * 단어를 Language에 맞게 변환하여 맵에 저장
+	 * 
+	 * @param word
+	 * @return
+	 *//*
+	public Map<String, String> langMap(String word) {
+		Map<String, String> rtnMap = new HashMap<> ();
+		String type = "";
+		int startIdx = 0;
+		
+		for(int i = 0; i < word.length(); i++) {
+			int ascii = word.charAt(i);		
+		
+			if(ascii >= 48 && ascii <= 57) {
+ 				
+				if(type.length() == 0 || type.equals("N")) {
+					type = "N";
+				} 
+				// 타입이 변경된 경우
+				else if(type.length() > 0 && !type.equals("N")) {
+					// 우선 바로 이전값 까지를 맵에 담는다
+					rtnMap.put(word.substring(startIdx, i-1), type);
+					
+					type = "N";
+					startIdx = i;
+				}
+			} else if(ascii >= 65 && ascii <= 90) { // 영문 대문자
+				return "E";
+			} else if(ascii >= 97 && ascii <= 122) { // 영문 대문자
+				return "E";
+			} else if(ascii>='가' && ascii<='힣') { // 한글
+				return "H";
+			}
+			
+			
+		}
+	}*/
 	
 	
 	/**
